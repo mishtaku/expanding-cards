@@ -1,0 +1,221 @@
+:root{
+    --radius: 40px;
+    --brand: #ffc800;
+    --brand-muted: #ffdd60;
+    --ink: #333333;
+    --ink-muted: #545454;
+    --light: #fefefe;
+}
+
+*, *::before, *::after { 
+    box-sizing: border-box; 
+}
+
+body{
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    font-weight: 400; 
+    margin:0;
+    background:var(--light);
+    color:var(--ink);
+}
+
+h1, h2, h3{
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    font-weight: 600;  
+}
+
+.logo{
+    max-width: 150px;
+    position: absolute;
+    left: 32px;
+    top: 32px;
+}
+
+main{
+    min-height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+}
+
+.cards-container{
+    display: flex;
+    gap: 16px;
+    width: min(1100px, 100%);
+    height: clamp(420px, 65vh, 720px);
+    overflow-x: auto;       /* keep scroll working */
+    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+}
+
+.cards-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.card{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    align-items: center;
+    border-radius: var(--radius);
+    overflow: hidden;
+    flex: 1 1 0; /* flex-grow: 1; flex-shrink: 1; flex-basis:  0; */   
+    transition: flex-grow 400ms ease, transform 200ms ease;
+}
+
+.card.card--active{ 
+  flex: 10 1 0;  /* flex-grow: 5; flex-shrink: 1; flex-basis:  0; */              
+}
+
+.card__media{
+    position:absolute; 
+    inset:0;
+    width:100%; 
+    height:100%; 
+    object-fit:cover;
+    filter: saturate(1.05);
+}
+
+.card::after{
+  content:"";
+  position:absolute; 
+  inset:0;
+  background: linear-gradient(0deg, transparent 55%, rgba(255,255,255,.9) 100%);
+}
+
+.card__description{
+  position:relative; 
+  z-index: 1;
+  width:100%; 
+  padding:24px;
+  text-align:center;
+  transition: opacity 300ms ease 300ms, transform 300ms ease 120ms;
+}
+
+.card:not(.card--active) .card__description{
+  opacity:0; 
+  transition: opacity 300ms ease 0ms;
+  transform: translateY(4px);
+}
+
+.card__title{
+    margin:32px auto 8px; 
+    font-size: 32px;
+}
+
+.card__text{
+  max-width:55ch; 
+  margin:0 auto 26px;
+  font-size: clamp(14px, 1.6vw, 16px); 
+  letter-spacing: 0.6px;
+  color: var(--ink-muted);
+  line-height: 1.4em;
+}
+
+.card__btn{
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    background-color: var(--brand);
+    color: var(--ink);
+    appearance:none; 
+    border:none;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 18px;
+    border-radius: var(--radius);   
+}
+
+.card__btn:hover, .card__btn:focus-visible{ 
+    background:var(--brand-muted); 
+}
+
+.card__arrow {
+    position: absolute;
+    bottom: 16px;
+    z-index: 1;
+    background-color: var(--brand);
+    height: 36px;
+    width: 36px;
+    border: none;
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+    opacity: 1;
+    transition:
+      transform 150ms ease,
+      background-color 150ms ease,
+      opacity 300ms ease; /* no delay here */
+}
+
+.card--active .card__arrow{ 
+    opacity: 0;
+    pointer-events: none;
+}
+
+.card:not(.card--active) .card__arrow {
+  transition-delay: 0s, 0s, 300ms; /* delay only the opacity property */
+}
+
+.card__arrow:hover, .card__arrow:focus-visible {
+    background:var(--brand-muted); 
+    transform: scale(1.06);
+}
+
+.contact-btn{
+  color: var(--ink);
+    position: absolute;
+    right: 32px;
+    bottom: 32px;
+    background-color: var(--brand);
+    height: 48px;
+    width: 48px;
+    border: none;
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+    display:grid; 
+    place-items:center;
+    text-decoration: none;
+}
+
+.contact-btn:hover{
+    background:var(--brand-muted); 
+}
+
+.card__btn:focus-visible,
+.card__arrow:focus-visible,
+.contact-btn:focus-visible {
+  outline: 3px solid #06F49E; /* your green */
+  outline-offset: 2px;
+}
+
+/* Mobile: horizontal scroll with snap */
+@media (max-width: 768px){
+  .cards-container {
+    overflow-x:auto; 
+    scroll-snap-type: x mandatory; 
+    padding-bottom: 8px;
+  }
+  .card { 
+    min-width: 90%; 
+    scroll-snap-align: center; 
+    flex: 10 1 0;
+  }
+  .card__description {
+    opacity: 1!important; 
+    transform: none;
+  }
+  .card__arrow {
+    display: none;
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .card, .card__description, .card__arrow{ 
+    transition: none !important; }
+}
+

@@ -1,0 +1,96 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expanding Cards Project – HTML, CSS & JavaScript</title>
+    <meta name="description" content="Interactive Expanding Cards project built with HTML, CSS, and JavaScript. Designed for accessibility with clear headings, keyboard navigation, and high-contrast visuals, it delivers smooth animations and works seamlessly across devices.">
+    <meta name="keywords" content="HTML, CSS, JavaScript, Expanding Cards Project">
+    <meta name="author" content="Bruno Mishtaku">
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="img/favicon/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="img/favicon/favicon-96x96.png">
+    <link rel="shortcut icon" href="img/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+    <meta name="apple-mobile-web-app-title" content="ExCards">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="img/favicon/mstile-150x150.png">    
+
+</head> 
+<body>
+    <header>
+        <!-- Logo -->
+        <img src="img/logo.png" alt="Expanding Cards" class="logo">
+    </header>
+
+    <main>
+        <section class="cards-container" aria-label="City cards">
+            <!-- Card 1 - Milan -->
+            <article class="card card--active" tabindex="0" aria-expanded="true">
+                <img class="card__media" src="img/milan.jpg" alt="Milan skyline">
+                <div class="card__description" id="desc-milan" role="region" aria-labelledby="title-milan">
+                    <h3 class="card__title">Milan</h3>
+                    <p class="card__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis asperiores explicabo molestias modi. Adipisci laborum iste voluptas quis dolorem.</p>
+                    <a class="card__btn" role="button" href="#">Book tour</a>
+                </div>
+                <button class="card__arrow" aria-label="Expand Milan" aria-controls="desc-milan"><i class="fa-solid fa-angle-right" aria-hidden="true"></i></button>
+            </article>
+            <!-- Card 2 - Florence -->
+            <article class="card" tabindex="0" aria-expanded="false">
+                <img class="card__media" src="img/florence.jpg" alt="Florence skyline">
+                <div class="card__description" id="desc-florence" role="region" aria-labelledby="title-florence">
+                    <h3 class="card__title">Florence</h3>
+                    <p class="card__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis asperiores explicabo molestias modi. Adipisci laborum iste voluptas quis dolorem.</p>
+                    <a class="card__btn" role="button" href="#">Book tour</a>
+                </div>
+                <button class="card__arrow" aria-label="Expand Florence" aria-controls="desc-florence"><i class="fa-solid fa-angle-right" aria-hidden="false"></i></button>
+            </article>
+            <!-- Card 3 - Rome -->
+            <article class="card" tabindex="0" aria-expanded="false">
+                <img class="card__media" src="img/rome.jpg" alt="Rome skyline">
+                <div class="card__description" id="desc-rome" role="region" aria-labelledby="title-rome">
+                    <h3 class="card__title">Rome</h3>
+                    <p class="card__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis asperiores explicabo molestias modi. Adipisci laborum iste voluptas quis dolorem.</p>
+                    <a class="card__btn" role="button" href="#">Book tour</a>
+                </div>
+                <button class="card__arrow" aria-label="Expand Rome" aria-controls="desc-rome"><i class="fa-solid fa-angle-right" aria-hidden="false"></i></button>
+            </article>
+            <!-- Card 4 - Venice -->
+            <article class="card" tabindex="0" aria-expanded="false">
+                <img class="card__media" src="img/venice.jpg" alt="Venice skyline">
+                <div class="card__description" id="desc-venice" role="region" aria-labelledby="title-venice">
+                    <h3 class="card__title">Venice</h3>
+                    <p class="card__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis asperiores explicabo molestias modi. Adipisci laborum iste voluptas quis dolorem.</p>
+                    <a class="card__btn" role="button" href="#">Book tour</a>
+                </div>
+                <button class="card__arrow" aria-label="Expand Venice" aria-controls="desc-venice"><i class="fa-solid fa-angle-right" aria-hidden="false"></i></button>
+            </article>
+            <!-- Card 5 - Verona -->
+            <article class="card" tabindex="0" aria-expanded="false">
+                <img class="card__media" src="img/verona.jpg" alt="Verona skyline">
+                <div class="card__description" id="desc-verona" role="region" aria-labelledby="title-verona">
+                    <h3 class="card__title">Verona</h3>
+                    <p class="card__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis asperiores explicabo molestias modi. Adipisci laborum iste voluptas quis dolorem.</p>
+                    <a class="card__btn" role="button" href="#">Book tour</a>
+                </div>
+                <button class="card__arrow" aria-label="Expand Verona" aria-controls="desc-verona"><i class="fa-solid fa-angle-right" aria-hidden="false"></i></button>
+            </article>
+        </section> 
+    </main>
+
+    <footer>
+        <a class="contact-btn" href="https://bruno.mishtaku.com" target="_blank"><i class="fa-solid fa-link"></i></a>
+        <script src="script.js"></script>
+    </footer>
+</body>
+</html>
+
+
